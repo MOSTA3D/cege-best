@@ -2,7 +2,7 @@ import { MutableRefObject } from "react";
 
 export interface INavProps{
     setMoviesList:React.Dispatch<React.SetStateAction<MovieType[]>>,
-    ref:MutableRefObject<null>
+    navRef:MutableRefObject<null>
 }
 
 export interface ISearchBoxProps{

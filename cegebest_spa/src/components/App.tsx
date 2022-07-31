@@ -5,7 +5,6 @@ import { Dispatch, SetStateAction } from 'react';
 // components
 import Nav from './Nav';
 import Popular from "./Popular";
-import Movie from "./Movie";
 import NotFound from "./NotFound";
 import '../App.scss';
 import { FetchFacad, testData } from '../utils/helper';
@@ -48,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav ref={navRef} {...{setMoviesList}}/>
+      <Nav {...{navRef, setMoviesList}}/>
       <Routes>
         <Route path="/" element={<Navigate to = "/movies" />} />
         <Route path="/movies" element={<Popular {...{moviesList}} />} />

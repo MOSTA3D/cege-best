@@ -6,9 +6,9 @@ import Logo from "./Logo";
 import { INavProps } from "../utils/types";
 
 function Nav (props:INavProps){
-    const {setMoviesList} = props;
+    const {setMoviesList, navRef} = props;
     return (
-        <nav className="nav">
+        <nav ref={navRef} className="nav">
             <Logo />
             <SearchBox {...{setMoviesList}} />
         </nav>

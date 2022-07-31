@@ -36,6 +36,7 @@ a{text-decoration: none; color: unset;}
 // components
 @import "./sass/nav";
 @import "./sass/popular";
+@import "./sass/moviecard";
 // .App{
 //   @include flex-box;
 //   background-color: #222;
@@ -77,17 +78,17 @@ a{text-decoration: none; color: unset;}
 
 
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+// @media (prefers-reduced-motion: no-preference) {
+//   .App-logo {
+//     animation: App-logo-spin infinite 20s linear;
+//   }
+// }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
