@@ -1,0 +1,93 @@
+// imports
+// @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+// mixins
+@mixin flex-box($is-row: true, $jstfy: space-between){
+  display: flex;
+  @if $is-row{
+    flex-direction: row;
+  }@else{
+    flex-direction: column;
+  }
+  justify-content: $jstfy;
+  align-items: center;
+}
+
+// global variables
+$base-color: #f9f9f9;
+$nd-base-color: #ecf0f0;
+$accent-color: #fff;
+$nd-accent-color: #111;
+$font-color: #fff;
+$nav-height: 60px;
+$dtrans: all 0.2s linear;
+
+// global declarations
+*{ margin: 0; padding: 0; box-sizing: border-box}
+
+body{
+  background-color: $nd-base-color;
+}
+
+input{border: none; outline: none; padding: 10px;border-radius: 5px;}
+
+a{text-decoration: none; color: unset;}
+
+// components
+@import "./sass/nav";
+@import "./sass/popular";
+// .App{
+//   @include flex-box;
+//   background-color: #222;
+//   min-height: 100vh;
+
+//   *{width: 100%}
+
+//   div.right{
+//     text-align: center;
+    
+//     h1{
+//       color: #eee;
+//       // color: #00f;
+//       margin: 200px auto;
+//       line-height: 90pt;
+//       font-size: 60pt;
+//       font-family: 'Press Start 2P', cursive;
+
+//       // span{color: rgb(187, 57, 6)}
+//     }
+//   }
+
+//   div.left{
+
+//     form{
+//       min-width: 400px;
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

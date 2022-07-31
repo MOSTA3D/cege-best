@@ -1,0 +1,43 @@
+div.movie-card{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: $base-color;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: rgb(0, 0, 0) 0px -150px 130px inset;
+    opacity: 0.7;
+    border-radius: 5px;
+    transition: $dtrans;
+
+    &:hover{
+        opacity: 1;
+        border-radius: unset;
+        box-shadow: rgb(0, 0, 0) 0px -200px 130px inset;
+
+        .content{
+            bottom: 0px;
+        }
+    }
+
+    .content{
+        width: 100%;
+        padding: 20px;
+        position: absolute;
+        bottom: -40px;
+        color: $font-color;
+        @include flex-box(false);
+        align-items: flex-start;
+        transition: $dtrans;
+
+        h1{
+            margin-bottom: 20px;
+        }
+
+        footer{
+            width: 100%;
+            @include flex-box;
+        }
+    }
+}

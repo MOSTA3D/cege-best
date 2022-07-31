@@ -1,0 +1,33 @@
+nav.nav{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    @include flex-box(true, flex-start);
+    padding: 0 20px;
+    height: $nav-height;
+    background-color: $base-color;
+    z-index: 2;
+
+    input{
+        height: 40px;
+        width: 400px;
+        font-size: 12pt;
+        border: 1px solid rgb(189, 187, 187);
+
+        // &:focus{
+        //     border-color: #f04336;
+        // }
+    }
+}
+
+div.logo{
+    display: inline;
+    margin-right: 20px;
+    color: #f04336;
+    font-size: 25pt;
+    font-weight: bold;
+
+    > span{
+        color: #06c;
+    }
+}
