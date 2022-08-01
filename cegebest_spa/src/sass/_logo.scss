@@ -1,0 +1,11 @@
+div.logo{
+    display: inline;
+    margin-right: 20px;
+    color: #f04336;
+    font-size: 25pt;
+    font-weight: bold;
+
+    > span{
+        color: #06c;
+    }
+}

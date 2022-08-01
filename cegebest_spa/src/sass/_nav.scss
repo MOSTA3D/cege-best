@@ -1,4 +1,6 @@
 nav.nav{
+    $input-width: 400px;
+
     position: fixed;
     top: 0;
     width: 100vw;
@@ -8,26 +10,42 @@ nav.nav{
     background-color: $base-color;
     z-index: 2;
 
-    input{
-        height: 40px;
-        width: 400px;
-        font-size: 12pt;
-        border: 1px solid rgb(189, 187, 187);
+    .search-box {
+        input{
+            position: relative;
+            height: 40px;
+            width: $input-width;
+            font-size: 12pt;
+            border: 1px solid rgb(187, 187, 187);
+    
+            // &:focus{
+            //     border-color: #f04336;
+            // }
+        }
 
-        // &:focus{
-        //     border-color: #f04336;
-        // }
+        .search-list{
+            position: absolute;
+            top: 60px;
+            width: $input-width;
+            height: 300px;
+            background-color: #777;;
+        }
     }
-}
+    @media only screen and (max-width: 568px){
+        .logo{
+            font-size: 14pt;
+        }
 
-div.logo{
-    display: inline;
-    margin-right: 20px;
-    color: #f04336;
-    font-size: 25pt;
-    font-weight: bold;
+        .search-box{
+            input{
+                width: 65vw;
+            }
 
-    > span{
-        color: #06c;
+            .search-list{
+                right: 20px;
+                width: 90vw;
+            }
+        }
     }
+   
 }

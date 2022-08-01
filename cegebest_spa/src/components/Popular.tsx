@@ -5,12 +5,13 @@ import { useState } from "react";
 import { IPopularProps } from "../utils/types";
 import Logo from "./Logo";
 
-function Popular(props:IPopularProps){
-    const { moviesList } = props;
+function Popular(){
     return (
         <div className="popular">
-            <h1>Welcome To The Original <Logo/></h1>
-            <MovieGrid moviesList={moviesList} />
+            <h1 className="welcome">Welcome To The Original <Logo/></h1>
+            <br/>
+            <h1 className="trending">Trending</h1>
+            <MovieGrid/>
         </div>
     )
 }

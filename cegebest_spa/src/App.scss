@@ -16,7 +16,7 @@
 // global variables
 $base-color: #f9f9f9;
 $nd-base-color: #ecf0f0;
-$accent-color: #fff;
+$accent-color: #8487f5;
 $nd-accent-color: #111;
 $font-color: #fff;
 $nav-height: 60px;
@@ -34,6 +34,7 @@ input{border: none; outline: none; padding: 10px;border-radius: 5px;}
 a{text-decoration: none; color: unset;}
 
 // components
+@import "./sass/logo";
 @import "./sass/nav";
 @import "./sass/popular";
 @import "./sass/moviecard";

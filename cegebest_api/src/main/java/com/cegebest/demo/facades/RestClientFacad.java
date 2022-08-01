@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.cegebest.demo.ui.response.model.DetailsRouteReturn;
+import com.cegebest.demo.ui.response.model.MovieDetails;
 import com.cegebest.demo.ui.response.model.PopularRouteReturn;
 
 @Service
@@ -38,9 +40,17 @@ public class RestClientFacad {
 	}
 
 
+	
+	// todo: generic get method like the one in the frontend
 	public PopularRouteReturn getRequest(int page) {
-		String fullUrl = (apiUrl + "api_key=" + apiKey + "&page=" + page);
+		String fullUrl = (apiUrl + "popular/?" + "api_key=" + apiKey + "&page=" + page);
 		System.out.println('\n' + fullUrl + '\n');
 		return restTemplate.getForEntity(fullUrl, PopularRouteReturn.class).getBody();
+	}
+	
+	public DetailsRouteReturn getMovieDetails() {
+		String fullUrl = (apiUrl + "i_forget");
+		System.out.println('\n' + fullUrl + '\n');
+		return restTemplate.getForEntity(fullUrl, DetailsRouteReturn.class).getBody();
 	}
 }

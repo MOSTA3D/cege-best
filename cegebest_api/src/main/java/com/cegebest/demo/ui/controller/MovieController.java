@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cegebest.demo.ui.response.model.MovieBrief;
+import com.cegebest.demo.ui.response.model.MovieDetails;
 import com.cegedim.demo.ui.services.MovieService;
 
 @RestController
@@ -33,5 +35,12 @@ public class MovieController {
 		List<MovieBrief> movies = movieService.getPopularMovies(page);
 		return new ResponseEntity<>(movies, HttpStatus.OK);
 		
+	}
+	
+	@GetMapping(path="/movie/{id}", produces = {
+		MediaType.APPLICATION_JSON_VALUE
+	})
+	public ResponseEntity<MovieDetails> getMovieDetails(@PathVariable Long id){
+		return new ResponseEntity<>(movieService.getMovieDetails(id), HttpStatus.OK);
 	}
 }
