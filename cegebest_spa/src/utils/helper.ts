@@ -208,7 +208,6 @@ export const testData = {
 ]
 };
 
-
 export class FetchFacad{
     private static fetchFacad:FetchFacad|null;
 
@@ -222,7 +221,9 @@ export class FetchFacad{
 
     async getData<ReturnType>(url:string):Promise<ReturnType|Err>{
         try{
-            const response = await fetch(url);
+            const response = await fetch(url, {
+              // headers
+            });
             const result = await response.json();
             return result as ReturnType;
         }catch(err){

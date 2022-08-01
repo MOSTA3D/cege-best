@@ -3,16 +3,17 @@ import { MovieType } from "../utils/types";
 
 interface ISearchListProps{
     searchList: MovieType[];
+    isBlured: boolean
 }
 
 function SearchList(props:ISearchListProps){
-    const { searchList } = props;
+    const { searchList, isBlured } = props;
     return (
-        <div className="search-list">
+        <div className={"search-list" + (isBlured ? " blured" : "")}>
             <ul>
                 {searchList.map(sItem=>(
-                    <li>
-                        <img src = {`${POSTER_API}/w100/${sItem.poster_path}`} />
+                    <li key={sItem.id}>
+                        <img src = {`${POSTER_API}/w200/${sItem.posterPath}`} alt={sItem.title} />
                         {sItem.title}
                     </li>
                 ))}

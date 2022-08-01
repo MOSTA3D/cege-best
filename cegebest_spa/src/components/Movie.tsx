@@ -14,16 +14,16 @@ function Movie (props:IMovieProps){
     const imgWidth = 500;
     
     return (
-        <div className="movie-card" style={{backgroundImage: `url('${POSTER_API}/w${imgWidth}${movie.poster_path}')`}}>
+        <div className="movie-card" style={{backgroundImage: `url('${POSTER_API}/w${imgWidth}${movie.posterPath}')`}}>
             <div className="content">
                 <h1>{movie.title}</h1>
                 <footer>
                     <span>
-                        {movie.vote_average} &nbsp;
+                        {movie.voteAverage} &nbsp;
                         <FontAwesomeIcon style={{color: "#FFD700"}} icon={faStar} />
                     </span>
                     <span>
-                        {movie.release_date}
+                        {movie.releaseDate}
                     </span>
                 </footer>
             </div>

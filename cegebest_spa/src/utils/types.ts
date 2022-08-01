@@ -27,14 +27,26 @@ export type MovieType = {
     original_title: string;
     overview: string;
     popularity: number;
-    poster_path: string;
-    release_date: string;
+    posterPath: string;
+    releaseDate: string;
     title: string;
     video: boolean;
-    vote_average: number;
+    voteAverage: number;
     vote_count: number;
 };
 
 export interface Err{
     message: string
+}
+
+export interface MovieDetailsType {
+    id:number;
+    adult:boolean;
+    backdrop_path:string;
+    title:string;
+    vote_average:number;
+    runtime:number;
+    release_date:string;
+    original_language:string
+    poster_path:string
 }

@@ -1,42 +1,58 @@
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
 
-import { IMovieGridProps, MovieType } from "../utils/types";
+import { Err, IMovieGridProps, MovieType } from "../utils/types";
 import Movie from "./Movie";
 import { FetchFacad, testData } from "../utils/helper";
+import { BACKEND_URL } from "../utils/config";
 
 function MovieGrid(){
-    const [popularMoviesList, setPopularMoviesList]:[MovieType[]|never,Dispatch<SetStateAction<MovieType[]|never[]>>] = useState(testData.results);
+    const [popularMoviesList, setPopularMoviesList]:[MovieType[]|never,Dispatch<SetStateAction<MovieType[]|never[]>>] = useState([] as MovieType[]);
+    const navElementHeight = useRef(0);
+    const pageRef = useRef(2);
+
+
+    console.log(navElementHeight.current);
 
     useEffect(()=>{
+        navElementHeight.current = document.getElementsByClassName("nav")[0]?.clientHeight;
         const fetchFacad = FetchFacad.getFetchFacad();
     
-        // (async function(){
-        //   const data = await fetchFacad.getData<MovieType[]>(`${BACKEND_URL}/popular`);
-        //   if(!(data as Err).message){
-        //     return;
-        //   }
-        //   setMoviesList(testData.results);
-        // })()
+        (async function(){
+          const data = await fetchFacad.getData<MovieType[]>(`${BACKEND_URL}/popular?page=1`);
+          if((data as Err).message){
+            console.log("error");
+            return;
+          }
+          setPopularMoviesList(data as MovieType[]);
+        })()
     
         window.onscroll = ()=>{
-        //   if(!navRef.current) return;
+          if(!navElementHeight) return;
     
-        //   if((window.scrollY + window.innerHeight) === (document.body.scrollHeight + (navRef.current as HTMLElement).offsetHeight)){
-        //     console.log("you reached the end");
-        //     // fetchFacad.getData(`${BACKEND_URL}/movie/`);
-        //   }
+          if((window.scrollY + window.innerHeight) === (document.body.scrollHeight + navElementHeight.current)){
+            (async function(){
+                const data = await fetchFacad.getData(`${BACKEND_URL}/popular?page=${pageRef.current}`);
+                if((data as Err).message){
+                    console.log((data as Err).message);
+                }else{
+                    pageRef.current++;
+                    setPopularMoviesList((state)=>{
+                        const newState = [...state, ...(data as MovieType[])]
+                        return newState;
+                    })
+                }
+            })()
+
+          }
         }
-    
-        setPopularMoviesList(testData.results);
-        console.log(popularMoviesList.length);
     
       }, [])
     return (
         <div className="movie-grid">
             {popularMoviesList.length ? (popularMoviesList.map((movie:MovieType) =>{
                  return (
-                    <div key={movie.id} className={'something'}>
+                    <div key={movie.title} className={'something'}>
                         <span>
                             <Link to={`/movies/${movie.id}`}>
                                 <Movie movie={movie}/>
