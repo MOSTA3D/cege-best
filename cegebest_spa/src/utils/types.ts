@@ -49,4 +49,5 @@ export interface MovieDetailsType {
     release_date:string;
     original_language:string
     poster_path:string
+    overview:string
 }

@@ -17,8 +17,9 @@
 $base-color: #f9f9f9;
 $nd-base-color: #ecf0f0;
 $accent-color: #8487f5;
-$nd-accent-color: #111;
-$font-color: #fff;
+$nd-accent-color: #dd6d65;
+$font-color: $base-color;
+$nd-font-color: #3e3e3e;
 $nav-height: 60px;
 $dtrans: all 0.2s linear;
 
@@ -27,6 +28,19 @@ $dtrans: all 0.2s linear;
 
 body{
   background-color: $nd-base-color;
+}
+
+button{
+  outline: none;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 15pt;
+  font-weight: bold;
+  color: $font-color;
+  cursor: pointer;
+  transition: $dtrans;
 }
 
 input{border: none; outline: none; padding: 10px;border-radius: 5px;}
@@ -38,6 +52,7 @@ a{text-decoration: none; color: unset;}
 @import "./sass/nav";
 @import "./sass/popular";
 @import "./sass/moviecard";
+@import "./sass/moviedetails";
 // .App{
 //   @include flex-box;
 //   background-color: #222;

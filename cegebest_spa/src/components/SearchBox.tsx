@@ -3,7 +3,7 @@ import { useState, useRef, FormEvent, PropsWithChildren, Dispatch} from "react";
 import SearchList from "./SearchList";
 
 import { Err, ISearchBoxProps, MovieType } from "../utils/types";
-import { FetchFacad, testData } from "../utils/helper";
+import { FetchFacad } from "../utils/helper";
 import { BACKEND_URL } from "../utils/config";
 
 function SearchBox (){

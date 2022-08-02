@@ -7,7 +7,7 @@ import Nav from './Nav';
 import Popular from "./Popular";
 import NotFound from "./NotFound";
 import '../App.scss';
-import { FetchFacad, testData } from '../utils/helper';
+import { FetchFacad } from '../utils/helper';
 
 import {Err, MovieType} from "../utils/types";
 import MovieDetails from './MovieDetails';

@@ -3,8 +3,9 @@ import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
 
 import { Err, IMovieGridProps, MovieType } from "../utils/types";
 import Movie from "./Movie";
-import { FetchFacad, testData } from "../utils/helper";
+import { FetchFacad } from "../utils/helper";
 import { BACKEND_URL } from "../utils/config";
+import Loading from "./Loading";
 
 function MovieGrid(){
     const [popularMoviesList, setPopularMoviesList]:[MovieType[]|never,Dispatch<SetStateAction<MovieType[]|never[]>>] = useState([] as MovieType[]);
@@ -43,14 +44,13 @@ function MovieGrid(){
                     })
                 }
             })()
-
           }
         }
-    
       }, [])
     return (
-        <div className="movie-grid">
-            {popularMoviesList.length ? (popularMoviesList.map((movie:MovieType) =>{
+        popularMoviesList.length ? (
+            <div className="movie-grid">
+            {popularMoviesList.map((movie:MovieType) =>{
                  return (
                     <div key={movie.title} className={'something'}>
                         <span>
@@ -60,10 +60,11 @@ function MovieGrid(){
                         </span>
                     </div>
                  )
-            })):(
-                <div>loading</div>
-            )}
+            })}
         </div>
+        ):(
+            <Loading/>
+        )
     )
 }
 

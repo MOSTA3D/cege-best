@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { POSTER_API } from "../utils/config";
 import { MovieType } from "../utils/types";
 
@@ -12,10 +13,12 @@ function SearchList(props:ISearchListProps){
         <div className={"search-list" + (isBlured ? " blured" : "")}>
             <ul>
                 {searchList.map(sItem=>(
-                    <li key={sItem.id}>
-                        <img src = {`${POSTER_API}/w200/${sItem.posterPath}`} alt={sItem.title} />
-                        {sItem.title}
-                    </li>
+                    <Link to={"/movies/" + sItem.id}>
+                        <li key={sItem.id}>
+                            <img src = {`${POSTER_API}/w200/${sItem.posterPath}`} alt={sItem.title} />
+                            {sItem.title}
+                        </li>
+                    </Link>
                 ))}
             </ul>
         </div>
