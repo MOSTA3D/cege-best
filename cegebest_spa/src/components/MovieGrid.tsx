@@ -31,13 +31,13 @@ function MovieGrid(){
         window.onscroll = ()=>{
           if(!navElementHeight) return;
     
-          if((window.scrollY + window.innerHeight) === (document.body.scrollHeight + navElementHeight.current)){
+          if(Math.ceil(window.scrollY + window.innerHeight) === ((document.body.scrollHeight + navElementHeight.current))){
             (async function(){
                 const data = await fetchFacad.getData(`${BACKEND_URL}/popular?page=${pageRef.current}`);
                 if((data as Err).message){
                     console.log((data as Err).message);
                 }else{
-                    pageRef.current++;
+                    pageRef.current = pageRef.current + 1;
                     setPopularMoviesList((state)=>{
                         const newState = [...state, ...(data as MovieType[])]
                         return newState;

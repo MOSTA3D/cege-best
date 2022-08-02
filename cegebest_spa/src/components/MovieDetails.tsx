@@ -22,27 +22,27 @@ function MovieDetails(){
             vote_average
     }))(movieDetails);
 
-    movieDetails.runtime&&((movieDetails.runtime as unknown as String) = movieDetails.runtime.toString() + " minures");
+    movieDetails.runtime&&(movieDetails.runtime = movieDetails.runtime.toString() + " minures");
 
     useEffect(()=>{
         (async function(){
-            // const fetchFacad = FetchFacad.getFetchFacad();
-            // const data = await fetchFacad.getData<MovieDetailsType>(`${BACKEND_URL}/${id}`);
-            // // if(!data || data.message as Err){
-            // //     return;
-            // // }
-
-            // if((data as Err).message){
-            //     console.log((data as Err).message);
+            const fetchFacad = FetchFacad.getFetchFacad();
+            const data = await fetchFacad.getData<MovieDetailsType>(`${BACKEND_URL}/${id}`);
+            // if(!data || data.message as Err){
             //     return;
             // }
 
-            // setMovieDetails(data as MovieDetailsType);
-            setMovieDetails(movieTestDetails);
+            if((data as Err).message){
+                console.log((data as Err).message);
+                return;
+            }
+
+            setMovieDetails(data as MovieDetailsType);
+            // setMovieDetails(movieTestDetails);
         })()
 
 
-    }, []);
+    }, [id]);
     return (
         movieDetails ? (
         <div className="movie-details" style = {{backgroundImage: `${POSTER_API}/w500/${movieDetails.backdrop_path}`}}>

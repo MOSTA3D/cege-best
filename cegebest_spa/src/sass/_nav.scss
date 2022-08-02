@@ -58,6 +58,10 @@ nav.nav{
                     padding: 7px;
                     @include flex-box(true, flex-start);
                     border-bottom: 1px solid #ddd;
+
+                    &:hover{
+                        background-color: #eee;
+                    }
     
                     &:last-of-type{
                         border-bottom: unset;

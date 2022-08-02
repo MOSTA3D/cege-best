@@ -11,15 +11,12 @@ import { FetchFacad } from '../utils/helper';
 
 import {Err, MovieType} from "../utils/types";
 import MovieDetails from './MovieDetails';
-import { BACKEND_URL } from '../utils/config';
 
 
 function App() {
   // state
 
   // refs
-  const navRef = useRef(null);
-  const pageTrack = useRef(1);
   
 
   return (

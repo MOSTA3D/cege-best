@@ -45,7 +45,7 @@ export interface MovieDetailsType {
     backdrop_path:string;
     title:string;
     vote_average:number;
-    runtime:number;
+    runtime:number|string;
     release_date:string;
     original_language:string
     poster_path:string

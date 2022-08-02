@@ -13,8 +13,8 @@ function SearchList(props:ISearchListProps){
         <div className={"search-list" + (isBlured ? " blured" : "")}>
             <ul>
                 {searchList.map(sItem=>(
-                    <Link to={"/movies/" + sItem.id}>
-                        <li key={sItem.id}>
+                    <Link to={"/movies/" + sItem.id} key={sItem.id}>
+                        <li>
                             <img src = {`${POSTER_API}/w200/${sItem.posterPath}`} alt={sItem.title} />
                             {sItem.title}
                         </li>
