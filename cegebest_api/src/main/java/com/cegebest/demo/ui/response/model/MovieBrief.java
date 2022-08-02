@@ -2,17 +2,27 @@ package com.cegebest.demo.ui.response.model;
 
 public class MovieBrief {
 	private String title;
-	private int voteAverage;
-	private String releaseDate;
-	private String posterPath;
+	private int vote_average;
+	private String release_date;
+	private String poster_path;
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public MovieBrief() {}
 	
-	public MovieBrief(String title, int voteAverage, String releaseDate, String posterPath) {
+	public MovieBrief(String title, int vote_average, String release_date, String poster_path, int id) {
+		this.id = id;
 		this.title = title;
-		this.voteAverage = voteAverage;
-		this.releaseDate = releaseDate;
-		this.posterPath = posterPath;
+		this.vote_average = vote_average;
+		this.release_date = release_date;
+		this.poster_path = poster_path;
 	}
 
 	public String getTitle() {
@@ -24,26 +34,26 @@ public class MovieBrief {
 	}
 
 	public int getVoteAverage() {
-		return voteAverage;
+		return vote_average;
 	}
 
-	public void setVoteAverage(int voteAverage) {
-		this.voteAverage = voteAverage;
+	public void setVoteAverage(int vote_average) {
+		this.vote_average = vote_average;
 	}
 
 	public String getReleaseDate() {
-		return releaseDate;
+		return release_date;
 	}
 
 	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
+		this.release_date = releaseDate;
 	}
 
 	public String getPosterPath() {
-		return posterPath;
+		return poster_path;
 	}
 
 	public void setPosterPath(String posterPath) {
-		this.posterPath = posterPath;
+		this.poster_path = posterPath;
 	}
 }
