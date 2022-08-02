@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,10 +38,15 @@ public class MovieController {
 		
 	}
 	
-	@GetMapping(path="/movie/{id}", produces = {
-		MediaType.APPLICATION_JSON_VALUE
-	})
+	@GetMapping("/search")
+	public ResponseEntity<List<MovieBrief>> getSearchMovies(@RequestParam String query){
+		List<MovieBrief> movies = movieService.getSearchList(query);
+		return new ResponseEntity<>(movies, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{id}")
 	public ResponseEntity<MovieDetails> getMovieDetails(@PathVariable Long id){
-		return new ResponseEntity<>(movieService.getMovieDetails(id), HttpStatus.OK);
+		MovieDetails movieDetails = movieService.getMovieDetails(id);
+		return new ResponseEntity<>(movieDetails, HttpStatus.OK);
 	}
 }
