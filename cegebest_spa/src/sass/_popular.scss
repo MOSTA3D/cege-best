@@ -1,5 +1,16 @@
 div.popular{
     margin-top: $nav-height;
     padding: 20px;
+    color: $nd-font-color;
+
     @import "./moviegrid";
+
+    // nesting
+    h1.welcome{
+        text-align: center;
+    }
+    h1.trending{
+        font-size: 3.5em;
+        color: $accent-color;
+    }
 }
