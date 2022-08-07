@@ -23,11 +23,21 @@ public class MovieDetails {
 	private int runtime;
 	@Column
 	private String release_date;
+	@Column(columnDefinition="TEXT")
+	private String overview;
 	@Column
 	private String original_language;
 	@Column
 	private String poster_path;
 
+	public String getOverview() {
+		return overview;
+	}
+
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+	
 	public boolean isAdult() {
 		return adult;
 	}

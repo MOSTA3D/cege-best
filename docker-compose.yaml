@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  spa: 
+    build: ./cegebest_spa/
+    container_name: spa_container
+    ports:
+      - "4000:3000"
+    environment:
+      - API_URL=some api url
+  
+  api:
+    build: ./cegebest_api/
+    container_name: api_container
+    ports:
+      - "8080:8080"
+    environment:
+      - api_key=the api key

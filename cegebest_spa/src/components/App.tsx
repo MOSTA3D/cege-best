@@ -17,6 +17,8 @@ function App() {
   // state
 
   // refs
+
+  console.log("the api url is " + process.env.API_URL);
   
 
   return (

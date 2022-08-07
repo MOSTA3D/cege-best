@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.cegebest.demo.facades.RestClientFacad;
@@ -15,8 +16,8 @@ import com.cegebest.demo.ui.response.model.PopularRouteReturn;
 
 @Service
 public class MovieService {
-	private final String url = "https://api.themoviedb.org/3";
-	private final String key = "a97243d7813d31446f6c43284e6854d5";
+	private String url;
+	private String key;
 	
 	@Autowired
 	private RestClientFacad restClientFacad;
@@ -26,8 +27,6 @@ public class MovieService {
 	
 	public MovieService(RestClientFacad restClientFacad) {
 		this.restClientFacad = restClientFacad;
-		this.restClientFacad.setApiKey(this.key);
-		this.restClientFacad.setApiUrl(this.url);
 	}
 	
 	public List<MovieBrief> getPopularMovies(int page) {

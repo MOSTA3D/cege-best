@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { BACKEND_URL, POSTER_API } from "../utils/config";
-import { FetchFacad, movieTestDetails } from "../utils/helper";
+import { FetchFacad } from "../utils/helper";
 import { Err, MovieDetailsType } from "../utils/types";
 
 function MovieDetails(){
