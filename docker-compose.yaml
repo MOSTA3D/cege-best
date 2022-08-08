@@ -2,11 +2,14 @@ version: "3.8"
 services:
   spa: 
     build: ./cegebest_spa/
+      # args:
+        # SOME: "http://localhost:8080/movies/""
+        
     container_name: spa_container
-    ports:
-      - "4000:3000"
     environment:
-      - API_URL=some api url
+      - API_URL=http://localhost:8080/movies/
+    ports:
+      - "3001:80"
   
   api:
     build: ./cegebest_api/
@@ -14,4 +17,5 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - api_key=the api key
+      - API_URL=https://api.themoviedb.org/3
+      - API_KEY=a97243d7813d31446f6c43284e6854d5
