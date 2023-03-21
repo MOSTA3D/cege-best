@@ -16,7 +16,6 @@ import com.cegebest.demo.repository.MovieRepo;
 import com.cegebest.demo.dto.MovieBrief;
 
 import static com.cegebest.demo.utils.Common.getFullUrl;
-import static com.cegebest.demo.utils.Common.mapToQueryString;
 
 @Service
 public class MovieService {
@@ -65,12 +64,6 @@ public class MovieService {
         return defaultQueryMap;
     }
 
-    public String getDefaultApiQueryString() {
-        if (defaultQueryString == null) {
-            defaultQueryString = mapToQueryString(getDefaultQueryMap());
-        }
-        return defaultQueryString;
-    }
     @AllArgsConstructor
     static
     class SearchListQueryParams {
