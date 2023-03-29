@@ -1,7 +1,7 @@
 package com.cegebest.demo.exceptionHandler;
 
 import com.cegebest.demo.dto.MessageResponseDto;
-import com.cegebest.demo.dto.MessageStatus;
+import com.cegebest.demo.enums.MessageStatus;
 import com.cegebest.demo.exception.ApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

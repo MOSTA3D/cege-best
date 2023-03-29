@@ -1,4 +1,4 @@
-import { MovieType } from "../utils/types";
+import { PopularMovie } from "../utils/types";
 import bgImg from "../assets/images/family.png"
 import { POSTER_API } from "../utils/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,10 +6,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 
 interface IMovieProps{
-    movie:MovieType
+    movie:PopularMovie
 }
 
-function Movie (props:IMovieProps){
+function MovieCard (props:IMovieProps){
     const {movie} = props;
     const imgWidth = 500;
     
@@ -31,4 +31,4 @@ function Movie (props:IMovieProps){
     )
 }
 
-export default Movie;
+export default MovieCard;

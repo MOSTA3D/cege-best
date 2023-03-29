@@ -1,24 +1,25 @@
 import { MutableRefObject } from "react";
+import { ResponseStatus } from "./config";
 
 export interface INavProps{
-    setMoviesList:React.Dispatch<React.SetStateAction<MovieType[]>>,
+    setMoviesList:React.Dispatch<React.SetStateAction<PopularMovie[]>>,
     navRef:MutableRefObject<null>
 }
 
 export interface ISearchBoxProps{
-    setMoviesList:React.Dispatch<React.SetStateAction<MovieType[]>>
+    setMoviesList:React.Dispatch<React.SetStateAction<PopularMovie[]>>
 }
 
 export interface IPopularProps{
-    moviesList:MovieType[]
+    moviesList:PopularMovie[]
 }
 
 export interface IMovieGridProps{
-    moviesList:MovieType[]
+    moviesList:PopularMovie[]
 }
 
 
-export type MovieType = {
+export type PopularMovie = {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
@@ -35,11 +36,12 @@ export type MovieType = {
     vote_count: number;
 };
 
-export interface Err{
+export interface ApiMessage{
+    status: ResponseStatus
     message: string
 }
 
-export interface MovieDetailsType {
+export interface MovieDetails {
     id:number;
     adult:boolean;
     backdrop_path:string;

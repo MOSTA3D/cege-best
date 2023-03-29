@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { POSTER_API } from "../utils/config";
-import { MovieType } from "../utils/types";
+import { PopularMovie } from "../utils/types";
 
 interface ISearchListProps{
-    searchList: MovieType[];
+    searchList: PopularMovie[];
     isBlured: boolean
 }
 

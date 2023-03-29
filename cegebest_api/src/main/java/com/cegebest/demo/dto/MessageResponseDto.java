@@ -1,5 +1,6 @@
 package com.cegebest.demo.dto;
 
+import com.cegebest.demo.enums.MessageStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
