@@ -13,15 +13,5 @@ public class CegebestApiApplication {
 		SpringApplication.run(CegebestApiApplication.class, args);
 		System.out.println("SERVER INIT...");
 	}
-	
-//	@Bean
-//	public WebMvcConfigurer corsConfigurer() {
-//		return new WebMvcConfigurer() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/greeting-javaconfig").allowedOrigins("http://localhost:3000");
-//			}
-//		};
-//	}
 
 }

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 import { PopularMovie } from "../utils/types";
 import MovieCard from "./Movie";
@@ -10,18 +10,27 @@ function MovieGrid() {
   const [popularMoviesList, setPopularMoviesList] = useState<PopularMovie[]>(
     []
   );
-  const [page, setPage] = useState<number>(3);
+  const [page, setPage] = useState<number>(1);
   const navElementHeight = useRef(0);
 
-  const handleWindowScroll = () => {
-    // @todo : apply debouncing
-    if (
-      Math.ceil(window.scrollY + window.innerHeight) ===
-      document.body.scrollHeight + navElementHeight.current
-    ) {
-      setPage(page + 1);
+  const handleWindowScroll = useCallback((() => {
+    let timeoutKey: NodeJS.Timeout;
+
+    return function () {
+      if (timeoutKey) clearTimeout(timeoutKey);
+
+      timeoutKey = setTimeout(() => {
+        const scrollY = window.scrollY;
+        const innerHeight = window.innerHeight;
+        const scrollHeight = document.body.scrollHeight;
+
+        if ((scrollHeight + navElementHeight.current) - (scrollY + innerHeight) < 50) {
+          setPage(page => page + 1);
+        }
+      }, 300)
     }
-  };
+
+  })(), []);
 
   useEffect(() => {
     navElementHeight.current =
@@ -36,7 +45,7 @@ function MovieGrid() {
   useEffect(() => {
     (async function () {
       // @todo : apply error handling
-      const data = (await fetchMoviesByPage(page)) as PopularMovie[];
+      const data = await fetchMoviesByPage(page);
       setPopularMoviesList([...popularMoviesList, ...data]);
     })();
   }, [page]);
@@ -45,7 +54,7 @@ function MovieGrid() {
     <div className="movie-grid">
       {popularMoviesList.map((movie) => {
         return (
-          <div key={movie.title} className={"something"}>
+          <div key={movie.id} className={"something"}>
             <span>
               <Link to={`/movies/${movie.id}`}>
                 <MovieCard movie={movie} />

@@ -43,7 +43,7 @@ export class FetchFacad {
   }
 }
 
-export async function getData<R>(url: string): Promise<R | ApiMessage> {
+export async function getData<R>(url: string): Promise<R> {
   try {
     const response = await fetch(url);
     const data = await response.json();

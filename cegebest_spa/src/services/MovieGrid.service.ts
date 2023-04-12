@@ -10,5 +10,6 @@ export const fetchMoviesByPage = async (page: number) => {
     return data;
   } catch (e) {
     console.log(e);
+    return [];
   }
 };
