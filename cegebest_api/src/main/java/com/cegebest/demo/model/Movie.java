@@ -13,10 +13,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Movie {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private boolean adult;
+	private String backdrop_path;
 	private String title;
-	private String date;
-	private String posterPath;
-	private int voteAverage;
+	private String vote_average;
+	private int runtime;
+	private String release_date;
+	private String original_language;
+	private String poster_path;
 }

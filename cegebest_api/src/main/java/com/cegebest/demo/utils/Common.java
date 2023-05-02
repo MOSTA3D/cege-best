@@ -6,14 +6,22 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class Common {
-    public static String objectToQueryString(Object obj) throws IllegalAccessException {
+    public static String objectToQueryString(Object obj) {
         if (obj == null) return "";
         StringBuilder queryBuilder = new StringBuilder();
         Class<?> objClass = obj.getClass();
         Field[] fields = objClass.getDeclaredFields();
         for (Field field : fields) {
-            field.setAccessible(true);
-            Object fieldValue = field.get(obj);
+            if (!field.isAccessible()) continue;
+//            field.setAccessible(true);
+            Object fieldValue = null;
+
+            try {
+                fieldValue = field.get(obj);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             if (fieldValue != null) {
                 String fieldName = field.getName();
                 String fieldValueString = fieldValue.toString();
@@ -31,7 +39,7 @@ public class Common {
     }
 
     public static String mapToQueryString(Map<String, String> map) {
-        if(map == null) return "";
+        if (map == null) return "";
         StringBuilder sb = new StringBuilder();
         boolean first = true;
 

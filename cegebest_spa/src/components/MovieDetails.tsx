@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { BACKEND_URL, POSTER_API } from "../utils/config";
-import { FetchFacad } from "../utils/helper";
+import { FetchFacad, getData } from "../utils/helper";
 import { ApiMessage, MovieDetails } from "../utils/types";
 
 function MovieDetailsComponent() {
@@ -26,18 +26,16 @@ function MovieDetailsComponent() {
 
   useEffect(() => {
     (async function () {
-      const fetchFacad = FetchFacad.getFetchFacad();
-      const data = await fetchFacad.getData<MovieDetails>(
-        `${BACKEND_URL}/${id}`
-      );
+      try {
+        const data = await getData<MovieDetails>(
+          `${BACKEND_URL}/${id}`
+        );
 
-      if ((data as ApiMessage).message) {
-        console.log((data as ApiMessage).message);
+        setMovieDetails(data);
+      } catch (e) {
+        console.log(e);
         return;
       }
-
-      setMovieDetails(data as MovieDetails);
-      // setMovieDetails(movieTestDetails);
     })();
   }, [id]);
   return movieDetails ? (

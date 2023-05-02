@@ -9,10 +9,6 @@ import { useNavigate } from "react-router";
 function Nav() {
   const navigator = useNavigate();
 
-  const handleBackClick = () => {
-    navigator(-1);
-  };
-
   const handleTrendingClick = () => {
     if (window.location.pathname === "/movies") {
       return;
@@ -25,7 +21,7 @@ function Nav() {
       <div className="left">
         <FontAwesomeIcon
           className="back"
-          onClick={handleBackClick}
+          onClick={()=>navigator(-1)}
           icon={faAngleLeft}
         />
         <Logo />
